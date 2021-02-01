@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="MSBuild.Sdk.Extras/3.0.23">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;MonoAndroid90;MonoAndroid10.0;Xamarin.iOS10;</TargetFrameworks>
+        <AssemblyName>Plugin.RemoteConfig</AssemblyName>
+        <RootNamespace>Plugin.RemoteConfig</RootNamespace>
+        <PackageId>Xam.Plugin.FirebaseRemoteConfig</PackageId>
+        <Product>$(AssemblyName) ($(TargetFramework))</Product>
+        <AssemblyVersion>1.0.8</AssemblyVersion>
+        <AssemblyFileVersion>1.0.8</AssemblyFileVersion>
+        <Version>1.0.8</Version>
+        <PackOnBuild>true</PackOnBuild>
+        <NeutralLanguage>en</NeutralLanguage>
+        <DefineConstants>$(DefineConstants);</DefineConstants>
+        <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+        <LangVersion>latest</LangVersion>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageProjectUrl>https://github.com/smarongiu/Xamarin.Plugin.Firebase.RemoteConfig</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/smarongiu/Xamarin.Plugin.Firebase.RemoteConfig</RepositoryUrl>
+        <PackageTags>iOS,Android,xamarin,firebase,remoteconfig</PackageTags>
+        <Title>Firebase RemoteConfig Plugin for Xamarin</Title>
+        <Summary>Cross-platform library for using Firebase RemoteConfig in Xamarin Forms applications.</Summary>
+        <Description>Receive Firebase RemoteConfig across Xamarin.iOS, Xamarin.Android</Description>
+        <PackageReleaseNotes>Dependencies update</PackageReleaseNotes>
+        <Owners>BeTomorrow, smarongiu@betomorrow.com</Owners>
+        <Authors>Stefano Marongiu, Px7-941</Authors>
+        <Copyright>Copyright 2021 Stefano Marongiu</Copyright>
+        <Company>BeTomorrow, Px7-941</Company>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)'=='Release' ">
+        <DebugType>pdbonly</DebugType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Plugin.RemoteConfig.xml</DocumentationFile>
+    </PropertyGroup>
+    <PropertyGroup>
+        <NoWarn>1701;1702;1591</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\" />
+        <Compile Include="**\*.shared.cs" />
+        <Compile Include="**\*.shared.*.cs" />
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+        <Compile Include="**\*.android.cs" />
+        <Compile Include="**\*.android.*.cs" />
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+        <Compile Include="**\*.apple.cs" />
+        <Compile Include="**\*.apple.*.cs" />
+        <Compile Include="**\*.ios.cs" />
+        <Compile Include="**\*.ios.*.cs" />
+    </ItemGroup>
+</Project>
