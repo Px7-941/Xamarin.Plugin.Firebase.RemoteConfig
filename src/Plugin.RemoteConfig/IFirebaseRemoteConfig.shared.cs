@@ -35,6 +35,11 @@ namespace Plugin.FirebaseRemoteConfig
         string GetString(string key);
 
         /// <summary>
+        /// Gets the value with specified key as byte array.
+        /// </summary>
+        byte[] GetBytes(string key);
+
+        /// <summary>
         /// Gets the value with specified key as boolean.
         /// </summary>
         bool GetBool(string key);

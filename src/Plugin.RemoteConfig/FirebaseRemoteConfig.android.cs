@@ -46,6 +46,8 @@ namespace Plugin.FirebaseRemoteConfig
 
         public async Task ActivateAsync() => await _config.Activate();
 
+        public byte[] GetBytes(string key) => _config.GetValue(key).AsByteArray();
+
         public bool GetBool(string key) => _config.GetBoolean(key);
 
         public double GetDouble(string key) => _config.GetDouble(key);
