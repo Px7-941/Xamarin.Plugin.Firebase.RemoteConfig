@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Plugin.FirebaseRemoteConfig;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace RemoteConfigSample
 {
@@ -10,19 +9,15 @@ namespace RemoteConfigSample
         {
             InitializeComponent();
 
+            var defaultConfigResourceName = "remote_config_defaults";
+#if DEBUG
+            var minimumFetchIntervalInSeconds = 1L;
+            CrossFirebaseRemoteConfig.Current.Init(minimumFetchIntervalInSeconds, defaultConfigResourceName: defaultConfigResourceName);
+#else // Use defaults
+            CrossFirebaseRemoteConfig.Current.Init(defaultConfigResourceName: defaultConfigResourceName);
+#endif
+
             MainPage = new MainPage();
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
         }
     }
 }
