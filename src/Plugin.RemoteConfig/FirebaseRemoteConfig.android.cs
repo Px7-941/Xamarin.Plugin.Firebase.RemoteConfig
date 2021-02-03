@@ -20,15 +20,18 @@ namespace Plugin.FirebaseRemoteConfig
 
         public Task Init() => Init(defaultConfigResourceName: null);
 
-        public async Task Init(long minimumFetchIntervalInSeconds = 12 * 3600, string defaultConfigResourceName = null)
+        public async Task Init(long minimumFetchIntervalInSeconds = 12 * 3600, string? defaultConfigResourceName = null)
         {
             var settings = new AndroidFirebaseRemoteConfigSettings.Builder().SetMinimumFetchIntervalInSeconds(minimumFetchIntervalInSeconds).Build();
             await _config.SetConfigSettingsAsync(settings);
             if (!string.IsNullOrWhiteSpace(defaultConfigResourceName))
             {
                 var ctx = CrossCurrentActivity.Current.AppContext;
-                var resId = ctx.Resources.GetIdentifier(defaultConfigResourceName, "xml", ctx.PackageName);
-                await _config.SetDefaultsAsync(resId);
+                if (ctx.Resources != null)
+                {
+                    var resId = ctx.Resources.GetIdentifier(defaultConfigResourceName, "xml", ctx.PackageName);
+                    await _config.SetDefaultsAsync(resId);
+                }
             }
         }
 

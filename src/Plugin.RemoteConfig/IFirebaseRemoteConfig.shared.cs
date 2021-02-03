@@ -10,7 +10,7 @@ namespace Plugin.FirebaseRemoteConfig
         /// </summary>
         /// <param name="minimumFetchIntervalInSeconds">Sets the minimum interval between successive fetch calls. Default <c>12h</c>.</param>
         /// <param name="defaultConfigResourceName">If set, load defaults from this resource</param>
-        Task Init(long minimumFetchIntervalInSeconds = 12 * 3600, string defaultConfigResourceName = null);
+        Task Init(long minimumFetchIntervalInSeconds = 12 * 3600, string? defaultConfigResourceName = null);
 
         /// <summary>
         /// Initializes the service without default config.

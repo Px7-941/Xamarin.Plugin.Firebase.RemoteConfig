@@ -7,7 +7,7 @@ namespace Plugin.FirebaseRemoteConfig
     /// </summary>
     public class CrossFirebaseRemoteConfig
     {
-        static readonly Lazy<IFirebaseRemoteConfig> Implementation = new Lazy<IFirebaseRemoteConfig>(() => CreateFirebaseRemoteConfig(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+        static readonly Lazy<IFirebaseRemoteConfig?> Implementation = new Lazy<IFirebaseRemoteConfig?>(() => CreateFirebaseRemoteConfig(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
 
         /// <summary>
         /// Current instance to use
@@ -25,7 +25,7 @@ namespace Plugin.FirebaseRemoteConfig
             }
         }
 
-        static IFirebaseRemoteConfig CreateFirebaseRemoteConfig()
+        static IFirebaseRemoteConfig? CreateFirebaseRemoteConfig()
         {
 #if NETSTANDARD2_0
             return null;

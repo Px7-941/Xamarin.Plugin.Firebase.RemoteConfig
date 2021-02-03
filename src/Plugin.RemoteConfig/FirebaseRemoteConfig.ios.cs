@@ -19,7 +19,7 @@ namespace Plugin.FirebaseRemoteConfig
 
         public Task Init() => Init(defaultConfigResourceName: null);
 
-        public Task Init(long minimumFetchIntervalInSeconds = 12 * 3600, string defaultConfigResourceName = null)
+        public Task Init(long minimumFetchIntervalInSeconds = 12 * 3600, string? defaultConfigResourceName = null)
         {
             _config.ConfigSettings = new AppleFirebaseRemoteConfigSettings() { MinimumFetchInterval = minimumFetchIntervalInSeconds };
 
@@ -45,9 +45,9 @@ namespace Plugin.FirebaseRemoteConfig
 
         public byte[] GetBytes(string key) => _config[key].DataValue.ToArray();
 
-        public double GetDouble(string key) => _config[key].NumberValue.DoubleValue;
+        public double GetDouble(string key) => _config[key].NumberValue?.DoubleValue ?? default;
 
-        public long GetLong(string key) => _config[key].NumberValue.LongValue;
+        public long GetLong(string key) => _config[key].NumberValue?.LongValue ?? default;
 
         public string GetString(string key) => _config[key].StringValue;
 
